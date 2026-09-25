@@ -29,4 +29,5 @@ def main():
     (root/"latest.json").write_text(text)
     a=root/"archive"/now.strftime("%Y/%m/%d"); a.mkdir(parents=True,exist_ok=True)
     (a/(now.strftime("%H")+".json")).write_text(text)
+# Dynamic engine marker: production hourly archive
 if __name__=="__main__": main()
