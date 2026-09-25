@@ -35,3 +35,7 @@ The static, no-secret architecture is complete. Continuous global lightning, ras
 **If it glows, it happened.**
 
 Observed events are never replaced by decorative fake activity. Any visualization geometry that is not an observed geographic position is explicitly identified.
+
+
+## Dynamic engine
+The repository now includes a scheduled ingestion engine. GitHub Actions snapshots USGS and NASA EONET observations hourly into a provenance-preserving archive. The frontend prefers the generated snapshot and automatically falls back to direct public feeds until the first snapshot exists or whenever the archive is unavailable. This means EARTH NOW begins accumulating its own historical observation record without making the public site dependent on a server process.
