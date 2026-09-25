@@ -2,29 +2,36 @@
 
 **What is Earth doing right now?**
 
-A cinematic, zero-login window into current Earth systems and near-Earth space.
+A cinematic public window into Earth systems and near-Earth space.
 
-## v2
-Live layers:
-- USGS earthquakes — past 24 hours
-- NASA EONET open wildfires
-- NASA EONET severe storms
-- NASA EONET volcanic events
-- NASA EONET icebergs
-- NASA EONET dust/haze events
-- NASA/JPL CNEOS close approaches within 10 lunar distances over the next 7 days
+## v3 — full static vision
+Layers:
+- USGS earthquakes, with a 7-day source window
+- NASA EONET wildfires, severe storms, volcanoes, icebergs, and dust/haze
+- NASA/JPL CNEOS close approaches
 
-The interface includes independent layer controls, event provenance, timestamps, coordinates, source links, significant-event pulses, five-minute refresh, graceful partial-feed failure, mobile support, **TAKE ME SOMEWHERE**, and **OVERVIEW**.
+Experience:
+- interactive 3D Earth
+- independent layer controls
+- event source, timestamp, coordinates, and source link
+- **TAKE ME SOMEWHERE**
+- **OVERVIEW**
+- **TIME** — scrub the observation window backward through the last seven days
+- automatic refresh and graceful partial-feed failure
+- mobile layout and keyboard controls
 
 Live site: https://godsun108.github.io/earth-now/
 
-## Important spatial semantics
-Earth-event markers use observed geographic coordinates. Close-approach objects do **not** have an Earth surface latitude/longitude in the JPL close-approach feed; their globe positions are deterministic visualization anchors at orbital altitude, not claimed geographic positions. Their real close-approach distance, time, and relative velocity are shown from JPL data.
+## Time-machine semantics
+The timeline is an **observation-window explorer**, not a reconstructed satellite movie. At each selected time it shows observations present in the loaded public datasets around that window. EONET can provide multiple dated geometries for an event, while USGS supplies discrete earthquake observations.
 
-## Still outside the zero-key static architecture
-Some parts of the larger vision need a backend, credentials, specialized raster/stream infrastructure, or a different visualization model before they can be represented truthfully: global lightning, continuous weather/ocean fields, full satellite ephemerides, auroral ovals, and historical time-scrubbing. They should not be faked merely to fill the globe.
+## Near-Earth spatial semantics
+NASA/JPL close-approach data provides encounter time, distance, and velocity but not an Earth-surface latitude/longitude. Those markers therefore use deterministic visualization anchors above the globe. They are not claimed geographic positions.
+
+## Full-vision boundary
+The static, no-secret architecture is complete. Continuous global lightning, raster weather/ocean fields, operational satellite ephemerides, and auroral imagery require external tile/stream services, credentials, a backend, or specialized orbital/raster infrastructure. They are intentionally not fabricated.
 
 ## Principle
 **If it glows, it happened.**
 
-Observed events are never replaced with decorative fake activity. Any illustrative geometry is explicitly described as such.
+Observed events are never replaced by decorative fake activity. Any visualization geometry that is not an observed geographic position is explicitly identified.
