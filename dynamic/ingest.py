@@ -29,5 +29,15 @@ def main():
     (root/"latest.json").write_text(text)
     a=root/"archive"/now.strftime("%Y/%m/%d"); a.mkdir(parents=True,exist_ok=True)
     (a/(now.strftime("%H")+".json")).write_text(text)
+    index=root/"archive"/"index.json"
+    try: manifest=json.loads(index.read_text()) if index.exists() else {"schema":"earth-now.archive.v1","snapshots":[]}
+    except Exception: manifest={"schema":"earth-now.archive.v1","snapshots":[]}
+    rel="dynamic/archive/"+now.strftime("%Y/%m/%d/%H.json")
+    manifest["snapshots"]=[x for x in manifest.get("snapshots",[]) if x.get("path")!=rel]
+    manifest["snapshots"].append({"at":now.isoformat(),"path":rel,"events":len(events)})
+    manifest["snapshots"]=manifest["snapshots"][-8760:]
+    manifest["updated_at"]=now.isoformat()
+    index.write_text(json.dumps(manifest,separators=(",",":")))
+
 # Dynamic engine marker: production hourly archive
 if __name__=="__main__": main()
