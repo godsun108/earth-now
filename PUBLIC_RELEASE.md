@@ -12,7 +12,7 @@ EARTH NOW is finished when a stranger can open the public URL on a phone or desk
 
 ## Release gates
 - [x] Fix dynamic snapshot source-object normalization in frontend.
-- [ ] Browser smoke test: initial load, globe render, every layer toggle, event card, source link, overview, random, timeline, play/pause, now.
+- [ ] Desktop browser smoke test: initial load, globe render, every layer toggle, event card, source link, overview, random, timeline, play/pause, now. Mobile real-device core interaction already passed.
 - [x] Mobile smoke test at narrow viewport and touch interaction — real-device user check: globe rotation and overall look/feel good.
 - [x] Confirm historical archive path contract for GitHub Pages; fixed root-relative repository path resolution for THEN snapshots.
 - [x] Add deterministic archived data-contract tests.
@@ -34,3 +34,8 @@ A public visitor can load EARTH NOW, see authentic observations, inspect provena
 - Earth Now CI passed after introduction of the release contract checks.
 - GitHub Pages successfully deployed the release-checklist revision.
 - Archive manifest currently references real snapshot files; CI verifies those referenced files exist in the repository.
+
+## Release candidate status
+- Latest Pages deployment after the THEN path correction: success.
+- CI for the THEN path correction: success.
+- Remaining release blocker: desktop browser interaction smoke test. This requires a real browser interaction pass; do not mark it complete from static/code inspection alone.
