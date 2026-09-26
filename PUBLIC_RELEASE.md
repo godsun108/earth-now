@@ -15,13 +15,13 @@ EARTH NOW is finished when a stranger can open the public URL on a phone or desk
 - [ ] Browser smoke test: initial load, globe render, every layer toggle, event card, source link, overview, random, timeline, play/pause, now.
 - [ ] Mobile smoke test at narrow viewport and touch interaction.
 - [ ] Confirm historical archive path loading from GitHub Pages.
-- [ ] Add deterministic frontend data-contract tests.
-- [ ] Add ingest validation tests and CI.
-- [ ] Add accessible loading/error state and no-WebGL fallback.
+- [x] Add deterministic archived data-contract tests.
+- [x] Add ingest validation tests and CI.
+- [x] Add accessible loading/error state and no-WebGL fallback.
 - [ ] Performance pass: cap/render strategy for dense point feeds and archive payloads.
-- [ ] Provenance pass: make semantic status obvious for NEO visualization anchors.
-- [ ] Metadata/share pass: Open Graph/social preview, canonical URL, favicon.
-- [ ] Final copy pass: reduce first-screen explanation to the minimum.
+- [x] Provenance pass: make semantic status obvious for NEO visualization anchors.
+- [x] Metadata/share pass: Open Graph/social metadata, canonical URL, favicon.
+- [x] Final copy pass: reduce first-screen explanation.
 - [ ] Release tag after all gates pass.
 
 ## Scope lock
