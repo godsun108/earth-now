@@ -1,0 +1,26 @@
+name: Earth Now CI
+on:
+  push:
+    paths:
+      - "app.js"
+      - "index.html"
+      - "styles.css"
+      - "dynamic/**"
+      - "tests/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  data-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate archived observation contract
+        run: python -m unittest discover -s tests -v
+      - name: Syntax-check ingest
+        run: python -m py_compile dynamic/ingest.py
