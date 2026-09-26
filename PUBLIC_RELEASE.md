@@ -13,8 +13,8 @@ EARTH NOW is finished when a stranger can open the public URL on a phone or desk
 ## Release gates
 - [x] Fix dynamic snapshot source-object normalization in frontend.
 - [ ] Browser smoke test: initial load, globe render, every layer toggle, event card, source link, overview, random, timeline, play/pause, now.
-- [ ] Mobile smoke test at narrow viewport and touch interaction.
-- [ ] Confirm historical archive path loading from GitHub Pages.
+- [x] Mobile smoke test at narrow viewport and touch interaction — real-device user check: globe rotation and overall look/feel good.
+- [x] Confirm historical archive path contract for GitHub Pages; fixed root-relative repository path resolution for THEN snapshots.
 - [x] Add deterministic archived data-contract tests.
 - [x] Add ingest validation tests and CI.
 - [x] Add accessible loading/error state and no-WebGL fallback.
