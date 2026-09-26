@@ -18,7 +18,7 @@ EARTH NOW is finished when a stranger can open the public URL on a phone or desk
 - [x] Add deterministic archived data-contract tests.
 - [x] Add ingest validation tests and CI.
 - [x] Add accessible loading/error state and no-WebGL fallback.
-- [ ] Performance pass: cap/render strategy for dense point feeds and archive payloads.
+- [x] Performance pass: bound dense globe rendering while preserving full observation counts.
 - [x] Provenance pass: make semantic status obvious for NEO visualization anchors.
 - [x] Metadata/share pass: Open Graph/social metadata, canonical URL, favicon.
 - [x] Final copy pass: reduce first-screen explanation.
@@ -29,3 +29,8 @@ Do not add new layers until the release gates pass. Lightning, raster weather/oc
 
 ## Definition of done
 A public visitor can load EARTH NOW, see authentic observations, inspect provenance, travel through the current observation window, and use the core experience without knowing the project or reading documentation first.
+
+## Automated verification
+- Earth Now CI passed after introduction of the release contract checks.
+- GitHub Pages successfully deployed the release-checklist revision.
+- Archive manifest currently references real snapshot files; CI verifies those referenced files exist in the repository.
