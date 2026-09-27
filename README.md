@@ -39,3 +39,7 @@ Observed events are never replaced by decorative fake activity. Any visualizatio
 
 ## Dynamic engine
 The repository now includes a scheduled ingestion engine. GitHub Actions snapshots USGS and NASA EONET observations hourly into a provenance-preserving archive. The frontend prefers the generated snapshot and automatically falls back to direct public feeds until the first snapshot exists or whenever the archive is unavailable. This means EARTH NOW begins accumulating its own historical observation record without making the public site dependent on a server process.
+
+
+## EARTH → EYES
+Geographic observations expose **OPEN EYES**, which hands the observation latitude/longitude to WINDOW SEEKER using its public URL contract. WINDOW remains the owner of camera discovery, verification, truth labels, and ranking. CNEOS markers are excluded because their globe coordinates are visualization anchors rather than Earth-surface positions.
