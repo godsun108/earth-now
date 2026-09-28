@@ -10,3 +10,13 @@ footer{position:absolute;z-index:2;left:5vw;right:5vw;bottom:20px;display:flex;j
 
 @media(max-width:700px){header{padding:calc(16px + env(safe-area-inset-top)) 18px 0}.brand small,#status{display:none}.head-right{gap:8px}.hero{left:20px;bottom:31vh;max-width:calc(100vw - 40px)}.hero h1{font-size:clamp(47px,14vw,68px)}.lede{max-width:270px;font-size:9px}.actions{left:20px;right:20px;bottom:calc(47px + env(safe-area-inset-bottom));display:grid;grid-template-columns:auto 1fr}.somewhere{width:100%;min-width:0}.card{left:17px;right:17px;top:auto;bottom:calc(155px + env(safe-area-inset-bottom));width:auto}.card .mag{font-size:30px}.instruments{padding-left:20px;padding-right:20px}.layers{gap:5px}.layer{padding:8px;font-size:7px}footer{left:20px;right:20px;bottom:calc(12px + env(safe-area-inset-bottom));font-size:5px}footer span:last-child{max-width:65%;text-align:right}}
 @media(prefers-reduced-motion:reduce){.pulse{animation:none}*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Place arrival — Earth introduces the human geography behind an observation. */
+.place-context{position:relative;margin:18px 0 14px;padding:16px 0 4px;border-top:1px solid rgba(255,255,255,.14)}
+.place-kicker,.place-loading{font:9px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.18em;color:#8d9aa2}
+.place-context h3{margin:5px 0 3px;font:500 clamp(19px,4vw,28px)/1.05 system-ui,sans-serif;letter-spacing:.03em}
+.place-locality{margin:0 0 12px!important;color:#aab5bb!important}
+.place-flag{position:absolute;right:0;top:16px;width:32px;height:21px;object-fit:cover;border-radius:2px;opacity:.78}
+.place-facts{display:flex;flex-wrap:wrap;gap:6px}
+.place-facts span{border:1px solid rgba(255,255,255,.11);border-radius:999px;padding:5px 8px;font:8px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;color:#b8c2c8}
+@media(max-width:640px){.place-context{margin-top:14px}.place-facts{gap:5px}.place-facts span{font-size:7px}}
