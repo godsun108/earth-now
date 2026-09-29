@@ -23,3 +23,5 @@ footer{position:absolute;z-index:2;left:5vw;right:5vw;bottom:20px;display:flex;j
 
 /* Mobile interaction reliability */
 button,a,input{touch-action:manipulation}button,.text-button,.somewhere,.minor,.layer,.eyes{min-height:44px}.text-button,.somewhere,.minor,.layer,.eyes{cursor:pointer;-webkit-tap-highlight-color:rgba(255,255,255,.12)}
+
+#observationGlows{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}.observation-glow{position:absolute;transform:translate(-50%,-50%);width:7px;height:7px;padding:0;border:0;border-radius:50%;background:#fff;box-shadow:0 0 7px #fff,0 0 18px #fff8;pointer-events:auto;cursor:pointer}.observation-glow.quake{width:6px;height:6px}.observation-glow.wildfire{background:#ff7043;box-shadow:0 0 8px #ff7043,0 0 18px #ff704399}.observation-glow.storm{background:#66c7ff;box-shadow:0 0 8px #66c7ff,0 0 18px #66c7ff99}.observation-glow.neo{background:#c994ff;box-shadow:0 0 8px #c994ff,0 0 18px #c994ff99}
