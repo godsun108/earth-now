@@ -24,3 +24,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Syntax-check ingest
         run: python -m py_compile dynamic/ingest.py
+      - name: Enforce release fingerprint
+        run: |
+          grep -q 'app.js?v=20260929-1' index.html
+          ! grep -q 'app.js?v=20260928-4' index.html
