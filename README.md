@@ -9,6 +9,9 @@ Layers:
 - USGS earthquakes, with a 7-day source window
 - NASA EONET wildfires, severe storms, volcanoes, icebergs, and dust/haze
 - NASA/JPL CNEOS close approaches
+- NOAA/NWS active U.S. tornado warnings
+- tropical cyclone classification from NASA EONET severe-storm observations
+- on-demand global 2 m air-temperature sampling from Open-Meteo (15° grid; live layer, not archived)
 
 Experience:
 - interactive 3D Earth
@@ -29,7 +32,7 @@ The timeline is an **observation-window explorer**, not a reconstructed satellit
 NASA/JPL close-approach data provides encounter time, distance, and velocity but not an Earth-surface latitude/longitude. Those markers therefore use deterministic visualization anchors above the globe. They are not claimed geographic positions.
 
 ## Full-vision boundary
-The static, no-secret architecture is complete. Continuous global lightning, raster weather/ocean fields, operational satellite ephemerides, and auroral imagery require external tile/stream services, credentials, a backend, or specialized orbital/raster infrastructure. They are intentionally not fabricated.
+The static, no-secret architecture is complete. Continuous global lightning, high-resolution raster weather/ocean fields, operational satellite ephemerides, and auroral imagery require external tile/stream services, credentials, a backend, or specialized orbital/raster infrastructure. The current TEMPERATURE instrument is explicitly a sampled global observation grid rather than a fabricated continuous raster. They are intentionally not fabricated.
 
 ## Principle
 **If it glows, it happened.**
