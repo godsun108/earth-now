@@ -12,6 +12,7 @@ Layers:
 - NOAA/NWS active U.S. tornado warnings
 - tropical cyclone classification from NASA EONET severe-storm observations
 - on-demand global 2 m air-temperature sampling from Open-Meteo (15° grid; live layer, not archived)
+- on-demand global 10 m wind speed/direction sampling from Open-Meteo (15° grid; live layer, not archived)
 
 Experience:
 - interactive 3D Earth
