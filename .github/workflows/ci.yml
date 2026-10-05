@@ -26,5 +26,5 @@ jobs:
         run: python -m py_compile dynamic/ingest.py
       - name: Enforce release fingerprint
         run: |
-          grep -q 'app.js?v=906d7a19' index.html
+          python -c 'import hashlib,re,pathlib; s=pathlib.Path("index.html").read_text(); h=hashlib.sha256(pathlib.Path("app.js").read_bytes()).hexdigest()[:12]; assert re.search(r"app\.js\?v="+h+r"[\"\x27]",s), "app.js fingerprint does not match asset"'
           ! grep -q 'app.js?v=20260928-4' index.html
