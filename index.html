@@ -25,4 +25,24 @@
 <div class="actions"><button id="reset" class="minor">WHOLE EARTH</button><button id="random" class="somewhere"><small>FOLLOW A REAL OBSERVATION</small><span>TAKE ME SOMEWHERE&nbsp; ↗</span></button></div>
 
 <footer><span id="clock"></span><span><a href="https://earthquake.usgs.gov/" target="_blank" rel="noreferrer">USGS</a> · <a href="https://eonet.gsfc.nasa.gov/" target="_blank" rel="noreferrer">NASA EONET</a> · <a href="https://www.weather.gov/" target="_blank" rel="noreferrer">NWS</a> · <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">OPEN-METEO</a> · <a href="https://ssd-api.jpl.nasa.gov/" target="_blank" rel="noreferrer">NASA/JPL</a> · IF IT GLOWS, IT HAPPENED</span></footer>
-</main><script src="https://unpkg.com/globe.gl"></script><script src="app.js?v=906d7a19"></script></body></html>
+</main><script>
+(function(){
+  const status=document.getElementById('status');
+  status.textContent='INITIALIZING RENDERER…';
+  const sources=['https://cdn.jsdelivr.net/npm/globe.gl','https://unpkg.com/globe.gl'];
+  let finished=false;
+  function fail(){if(finished)return;finished=true;status.textContent='3D UNAVAILABLE · RENDERER COULD NOT LOAD';document.getElementById('fallback')?.classList.remove('hidden')}
+  function boot(){if(finished)return;finished=true;const app=document.createElement('script');app.src='app.js?v=906d7a19';app.onerror=()=>{status.textContent='APP UNAVAILABLE · SCRIPT FAILED TO LOAD'};document.body.appendChild(app)}
+  function attempt(i){
+    if(finished)return;
+    if(typeof window.Globe==='function')return boot();
+    if(i>=sources.length)return fail();
+    const s=document.createElement('script');s.src=sources[i];s.async=true;
+    const timer=setTimeout(()=>{s.onload=s.onerror=null;s.remove();attempt(i+1)},6500);
+    s.onload=()=>{clearTimeout(timer);typeof window.Globe==='function'?boot():attempt(i+1)};
+    s.onerror=()=>{clearTimeout(timer);attempt(i+1)};
+    document.head.appendChild(s);
+  }
+  attempt(0);
+})();
+</script></body></html>
