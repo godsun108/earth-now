@@ -28,22 +28,57 @@
 </main><script>
 (function(){
   const status=document.getElementById('status');
-  status.textContent='INITIALIZING RENDERER…';
   const sources=['https://cdn.jsdelivr.net/npm/globe.gl','https://unpkg.com/globe.gl'];
-  let finished=false;
-  function fail(){if(finished)return;finished=true;status.textContent='3D UNAVAILABLE · RENDERER COULD NOT LOAD';document.getElementById('fallback')?.classList.remove('hidden')}
-  function boot(){if(finished)return;finished=true;const app=document.createElement('script');app.src='app.js?v=906d7a19';app.onerror=()=>{status.textContent='APP UNAVAILABLE · SCRIPT FAILED TO LOAD'};document.body.appendChild(app)}
+  let rendererFinished=false;
+
+  async function observationPreflight(){
+    status.textContent='SYNCING OBSERVATIONS…';
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),7000);
+    try{
+      const r=await fetch('dynamic/latest.json?'+Date.now(),{cache:'no-store',signal:controller.signal});
+      if(!r.ok)throw Error('snapshot '+r.status);
+      const j=await r.json();
+      const events=Array.isArray(j.events)?j.events:[];
+      if(!events.length)throw Error('empty snapshot');
+      status.textContent=events.length+' OBSERVATIONS · DATA ONLINE · INITIALIZING 3D…';
+      return true;
+    }catch(e){
+      status.textContent='OBSERVATION PREFLIGHT DEGRADED · INITIALIZING 3D…';
+      return false;
+    }finally{clearTimeout(timer)}
+  }
+
+  function rendererFail(){
+    if(rendererFinished)return;
+    rendererFinished=true;
+    const hasData=/\\d+ OBSERVATIONS/.test(status.textContent);
+    status.textContent=hasData?status.textContent.replace('INITIALIZING 3D…','3D UNAVAILABLE'): '3D UNAVAILABLE · RENDERER COULD NOT LOAD';
+    document.getElementById('fallback')?.classList.remove('hidden');
+  }
+  function boot(){
+    if(rendererFinished)return;
+    rendererFinished=true;
+    const app=document.createElement('script');
+    app.src='app.js?v=906d7a19';
+    app.onerror=()=>{status.textContent=/\\d+ OBSERVATIONS/.test(status.textContent)?status.textContent+' · APP SCRIPT FAILED':'APP UNAVAILABLE · SCRIPT FAILED TO LOAD'};
+    document.body.appendChild(app);
+  }
   function attempt(i){
-    if(finished)return;
+    if(rendererFinished)return;
     if(typeof window.Globe==='function')return boot();
-    if(i>=sources.length)return fail();
+    if(i>=sources.length)return rendererFail();
     const s=document.createElement('script');s.src=sources[i];s.async=true;s.crossOrigin='anonymous';
     const timer=setTimeout(()=>{s.onload=s.onerror=null;s.remove();attempt(i+1)},6500);
     s.onload=()=>{clearTimeout(timer);typeof window.Globe==='function'?boot():attempt(i+1)};
     s.onerror=()=>{clearTimeout(timer);s.remove();attempt(i+1)};
     document.head.appendChild(s);
   }
-  setTimeout(()=>{if(!finished&&status.textContent==='INITIALIZING RENDERER…')fail()},15000);
-  attempt(0);
+
+  observationPreflight().finally(()=>{
+    const guard=setTimeout(()=>{if(!rendererFinished)rendererFail()},15000);
+    attempt(0);
+    window.addEventListener('earth-now:renderer-terminal',()=>clearTimeout(guard),{once:true});
+  });
 })();
 </script></body></html>
