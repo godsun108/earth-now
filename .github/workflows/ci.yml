@@ -26,5 +26,5 @@ jobs:
         run: python -m py_compile dynamic/ingest.py
       - name: Enforce release fingerprint
         run: |
-          grep -q 'app.js?v=20260929-2' index.html
+          grep -q 'app.js?v=906d7a19' index.html
           ! grep -q 'app.js?v=20260928-4' index.html
