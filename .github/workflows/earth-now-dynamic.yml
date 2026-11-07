@@ -22,6 +22,8 @@ jobs:
           python-version: "3.12"
       - name: Ingest public observations
         run: python dynamic/ingest.py
+      - name: Prune archive beyond 90-day retention
+        run: python scripts/prune-archive.py --days 90 --apply
       - name: Commit snapshot
         run: |
           git config user.name earth-now-bot
